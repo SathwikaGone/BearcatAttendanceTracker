@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.attendence">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
+
+
+        <activity
+            android:name="com.example.attendence.MainActivity"
+            android:configChanges="orientation"
+            android:label="@string/main_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.attendence.SplashScreen"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.attendence.CalendarActivity" />
+        <activity
+            android:name="com.example.attendence.InputActivity"
+            android:label="@string/title_activity_input"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.example.attendence.StatsActivity" />
+        <activity
+            android:name="com.example.attendence.PredictorActivity"
+            android:label="@string/title_activity_predictor1"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.attendence.TimeTableActivity"
+            android:label="@string/title_activity_time_table2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.example.attendence.SettingsActivity" />
+        <activity
+            android:name="com.example.attendence.SubjectsActivity"
+            android:label="@string/title_activity_subjects2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>
