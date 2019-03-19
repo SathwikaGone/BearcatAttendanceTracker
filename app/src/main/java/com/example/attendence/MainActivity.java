@@ -92,12 +92,21 @@ public class MainActivity extends AppCompatActivity
 
 
 
-    void Banner() {
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
-        Date d = new Date();
-        String day = sdf.format(d);
+            void Banner() {
+                SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+                Date d = new Date();
+                String day = sdf.format(d);
 
-    }
+                String displayString = "Android";
+
+                if (!displayString.equals("")) {
+                    displayString = "New Notification! Today is " + "Tuesday" + " . Classes for Today : " + "Android";
+
+                    banner = (TextView) findViewById(R.id.notify);
+                    banner.setSelected(true);//doubt1
+                    banner.setText(displayString);
+                }
+            }
 
     void DashBoard() {
         calendar = (ImageButton) findViewById(R.id.calendar);
