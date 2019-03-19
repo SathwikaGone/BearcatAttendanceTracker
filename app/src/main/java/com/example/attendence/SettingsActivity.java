@@ -16,7 +16,7 @@ import java.util.Calendar;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    TextView textView;
+    TextView tv;
     Button setTime,setTime1;
     int PERCENT = 75;
     @Override
@@ -24,8 +24,8 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        textView= (TextView) findViewById(R.id.textView);
-        textView.setText(Integer.toString(PERCENT));
+        tv= (TextView) findViewById(R.id.textView);
+        tv.setText(Integer.toString(PERCENT));
         setTime= (Button) findViewById(R.id.reminder_time);
         setTime1= (Button) findViewById(R.id.notification_time);
         //-------------------------------------------------
