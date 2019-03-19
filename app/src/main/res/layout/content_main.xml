@@ -28,7 +28,6 @@
         android:background="#212121"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:marqueeRepeatLimit="none"
         android:padding="5dp"
         android:scrollHorizontally="true"
         android:singleLine="true"
