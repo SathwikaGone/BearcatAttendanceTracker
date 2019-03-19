@@ -54,6 +54,49 @@ public class StatsActivity extends AppCompatActivity {
         pieView = (PieView) findViewById(R.id.pieView);
         pieView.setInnerTextVisibility(View.VISIBLE);
         pieView.setInnerText(Double.toString(percent));
+        if (percent != 0.0)
+            pieView.setmPercentage((float) percent);
+        else {
+            pieView.setmPercentage(0.00001f);
+        }
+        pieView.setPercentageTextSize(50);
+        if (percent >= 90.0)
+            pieView.setPercentageBackgroundColor(getResources().getColor(R.color.barcolor1));
+        else if (percent >= 80.0)
+            pieView.setPercentageBackgroundColor(getResources().getColor(R.color.barcolor2));
+        else if (percent >= (getPercent() - 5))
+            pieView.setPercentageBackgroundColor(getResources().getColor(R.color.barcolor3));
+        else
+            pieView.setPercentageBackgroundColor(getResources().getColor(R.color.barcolor4));
+
+
+        //------------------------------------------------------
+        t = (TextView) findViewById(R.id.subName);
+        t.setText(subjectName);
+
+        t = (TextView) findViewById(R.id.totalClasses);
+        t.setText("Total Classes : " + (total + off));
+
+        t = (TextView) findViewById(R.id.attended);
+        t.setText("Total Classes attended : " + present);
+
+        t = (TextView) findViewById(R.id.absent);
+        t.setText("Total Classes absent : " + absent);
+
+        t = (TextView) findViewById(R.id.cancelled);
+        t.setText("Total Classes cancelled : " + off);
+
+        t = (TextView) findViewById(R.id.predicted);
+        int x = (int) Math.floor((present - CONST * total) / CONST);
+        int y = (int) Math.ceil((CONST * total - present) / (1 - CONST));
+        if (x == 0)
+            t.setText("You cannot miss the next class.");
+        else if (y == 0)
+            t.setText("You are right on the margin!");
+        else if (percent > getPercent())
+            t.setText("You can miss the next " + x + " classes !");
+        else
+            t.setText("You have to attend the next " + y + " classes !");
 
     }
     public int getPercent() {
