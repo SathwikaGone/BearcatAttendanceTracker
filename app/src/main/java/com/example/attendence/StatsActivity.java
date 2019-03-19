@@ -24,7 +24,6 @@ public class StatsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
         Intent i = getIntent();
-
     }
     public int getPercent() {
         SharedPreferences sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
