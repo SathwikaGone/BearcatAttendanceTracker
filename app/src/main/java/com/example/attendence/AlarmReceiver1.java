@@ -5,9 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
-/**
- * Created by jatin on 27/9/16.
- */
+
 public class AlarmReceiver1 extends BroadcastReceiver {
 
     @Override
