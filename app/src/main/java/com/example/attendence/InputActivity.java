@@ -1,13 +1,16 @@
 package com.example.attendence;
-
 import android.content.DialogInterface;
-
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TimePicker;
@@ -25,9 +28,12 @@ public class InputActivity extends AppCompatActivity {
     private Button OKButton;
     private AlertDialog.Builder alert;
     private ArrayList<String> list = new ArrayList<String>();
+    private ArrayAdapter adapter;
     private Calendar calendar;
     private String format = "";
     private String time;
+    SQLiteDatabase mydatabase;
+    Cursor resultSet;
     String subject_input;
     String day_input;
     String start_input;
@@ -41,7 +47,18 @@ public class InputActivity extends AppCompatActivity {
         setContentView(R.layout.activity_input);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        createDB();
         Input();
+    }
+    void createDB()
+    {
+        mydatabase = openOrCreateDatabase("SubjectsDB",MODE_PRIVATE,null);
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS " +
+                "subject(id INTEGER PRIMARY KEY AUTOINCREMENT,subjects varchar,days varchar,start varchar,end varchar);");
+
+
     }
 
     void Input()
@@ -97,7 +114,41 @@ public class InputActivity extends AppCompatActivity {
         });
 
         OKButton  =(Button )findViewById(R.id.OKButton);
-
+        OKButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(subject_input==null || day_input==null || start_input==null || end_input==null)
+                {
+                    Toast.makeText(getBaseContext(),"Something wrong",Toast.LENGTH_LONG).show();
+                }
+                else if(subject_input.equals(""))
+                {
+                    Toast.makeText(getBaseContext(),"courses empty",Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    int flag=0;
+                    try{
+                        mydatabase.execSQL("INSERT INTO subject(subjects,days,start,end) VALUES('"
+                                +subject_input+"','"+day_input+"','"+start_input+"','"
+                                +end_input+"');");
+                        //CalendarActivity cal = new CalendarActivity();
+                        //cal.addItemsToSpinner(subject_input);
+                    }
+                    catch (SQLException e) {
+                        flag=1;
+                    }
+                    if(flag == 1)
+                        Toast.makeText(getBaseContext(),"Unsuccessful",Toast.LENGTH_LONG).show();
+                    else
+                    {
+                        Toast.makeText(getBaseContext(),"Successful",Toast.LENGTH_LONG).show();
+                        Intent i=new Intent(getBaseContext(),MainActivity.class);
+                        startActivity(i);
+                    }
+                }
+            }
+        });
     }
     public void showTime(int hour, int min) {
         if (hour == 0) {
@@ -205,4 +256,5 @@ public class InputActivity extends AppCompatActivity {
         b.show();
     }
 
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 }
