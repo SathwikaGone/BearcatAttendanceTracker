@@ -19,9 +19,6 @@ import android.util.Log;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by jatin on 29/9/16.
- */
 public class NotificationService2 extends IntentService {
 
     private NotificationManager notificationManager;
@@ -31,11 +28,6 @@ public class NotificationService2 extends IntentService {
     Cursor resultSet;
     Notification notification;
 
-    /**
-     * Creates an IntentService.  Invoked by your subclass's constructor.
-     *
-     * @param name Used to name the worker thread, important only for debugging.
-     */
     public NotificationService2(String name) {
         super(name);
     }

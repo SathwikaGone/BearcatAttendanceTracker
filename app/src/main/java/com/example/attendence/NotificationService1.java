@@ -14,9 +14,6 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-/**
- * Created by jatin on 27/9/16.
- */
 public class NotificationService1 extends IntentService {
 
     private NotificationManager notificationManager;
@@ -24,11 +21,6 @@ public class NotificationService1 extends IntentService {
     private static int NOTIFICATION_ID = 1;
     Notification notification;
 
-    /**
-     * Creates an IntentService.  Invoked by your subclass's constructor.
-     *
-     * @param name Used to name the worker thread, important only for debugging.
-     */
     public NotificationService1(String name) {
         super(name);
     }
