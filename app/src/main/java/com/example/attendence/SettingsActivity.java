@@ -1,4 +1,4 @@
-package com.narula.jatin.attendancemanager;
+package com.example.attendence;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
