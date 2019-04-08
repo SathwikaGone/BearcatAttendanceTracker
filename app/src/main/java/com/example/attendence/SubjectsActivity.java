@@ -1,5 +1,4 @@
-package com.example.attendence;
-
+package com.narula.jatin.attendancemanager;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -25,7 +24,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-
 public class SubjectsActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -42,13 +40,15 @@ public class SubjectsActivity extends AppCompatActivity {
     final String msg="Click on the course to view " +
             "your statistics for that course.\n\n" +
             "Long press on the course to edit or delete that course.\n\n";
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subjects);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        help = (ImageButton) findViewById(R.id.help);
+        help= (ImageButton) findViewById(R.id.help);
         help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,15 +59,17 @@ public class SubjectsActivity extends AppCompatActivity {
 
             }
         });
-        MyRecyclerViewAdapter set = new MyRecyclerViewAdapter(null);
+
+
+        MyRecyclerViewAdapter set=new MyRecyclerViewAdapter(null);
         set.setLayout(1);
 
         /*adapter = new ArrayAdapter<String>(this, R.layout.listview, list);
         final ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(adapter);*/
         //--------------------------------------------
-        if (mAdapter != null)
-            mAdapter = null;
+        if(mAdapter!=null)
+            mAdapter=null;
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -75,11 +77,17 @@ public class SubjectsActivity extends AppCompatActivity {
         // mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, this));
         ArrayList results = new ArrayList<DataObject>();
         //--------------------------------------------
-        int index = 0;
-        DataObject obj = new DataObject("Android", "");
-        results.add(index, obj);
-
-
+        mydatabase = openOrCreateDatabase("SubjectsDB",MODE_PRIVATE,null);
+        resultSet = mydatabase.rawQuery("SELECT DISTINCT subjects FROM subject",null);
+        int index=0;
+        if(resultSet.moveToFirst()) {
+            do {
+                String str = resultSet.getString(0);
+                DataObject obj = new DataObject(str,"");
+                results.add(index, obj);
+                index++;
+            } while (resultSet.moveToNext());
+        }
         mAdapter = new MyRecyclerViewAdapter(results);
         mRecyclerView.setAdapter(mAdapter);
         ((MyRecyclerViewAdapter) mAdapter).setOnItemClickListener(new MyRecyclerViewAdapter
@@ -93,6 +101,9 @@ public class SubjectsActivity extends AppCompatActivity {
                 startActivity(i);*/
             }
         });
+
+        //--------------------------------------------------
+
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(this,
                 mRecyclerView, new ClickListener() {
 
@@ -133,10 +144,15 @@ public class SubjectsActivity extends AppCompatActivity {
             }
 
         }));
-
         //--------------------------------------------------
-    }
 
+
+
+
+
+
+
+    }
     public void showCustomDialog(final String old1,final int pos)
     {
         final Dialog dialog2 = new Dialog(SubjectsActivity.this);
@@ -156,6 +172,8 @@ public class SubjectsActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    saveData(old1,changedName);
+
                     ((MyRecyclerViewAdapter) mAdapter).deleteItem(pos);
                     DataObject obj=new DataObject(changedName,"");
                     ((MyRecyclerViewAdapter) mAdapter).addItem(obj,pos);
@@ -166,6 +184,47 @@ public class SubjectsActivity extends AppCompatActivity {
         dialog2.show();
     }
 
+    public void saveData(String old1,String changedName)
+    {
+        //SQL database
+        SQLiteDatabase mydatabase = openOrCreateDatabase("SubjectsDB",MODE_PRIVATE,null);
+        String query="";
+        String oldname = old1;
+
+        query = "UPDATE subject SET subjects='" + changedName + "' WHERE subjects='" + oldname + "';" ;
+
+        //     Toast.makeText(getBaseContext(), query, Toast.LENGTH_LONG).show();
+        //   Toast.makeText(getBaseContext(), query, Toast.LENGTH_LONG).show();
+        mydatabase.execSQL(query);
+        Toast.makeText(getBaseContext(), "Courses Successfully Updated", Toast.LENGTH_SHORT).show();
+    }
+    /*public void showChangeLangDialog() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.custom_dialog, null);
+        dialogBuilder.setView(dialogView);
+
+        final EditText edt = (EditText) dialogView.findViewById(R.id.edit1);
+
+        dialogBuilder.setTitle("Add Subject");
+        dialogBuilder.setMessage("Enter subject name :");
+        dialogBuilder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //do something with edt.getText().toString();
+                String str=edt.getText().toString();
+                mydatabase.execSQL("INSERT INTO subjects VALUES('"+str+"');");
+                list.add(str);
+                adapter.notifyDataSetChanged();
+            }
+        });
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+            }
+        });
+        AlertDialog b = dialogBuilder.create();
+        b.show();
+    }*/
     class RecyclerTouchListener implements RecyclerView.OnItemTouchListener{
 
         private ClickListener clicklistener;
