@@ -8,3 +8,5 @@ Team Members:
 
 This application is mainly used for student to add courses, class schedule, enter the attendance and student can view the class schedule, can set the time so that he can get the notification on his class time.
 
+Our application can run in every Android mobile devices.
+
