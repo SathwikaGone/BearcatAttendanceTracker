@@ -20,16 +20,17 @@
     android:layout_centerVertical="true"
     android:src="@mipmap/splashlogo"
     />
+
     <TextView
-        android:layout_below="@+id/logo"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="10dp"
+        android:text="Bearcat Attendence Tracker"
         android:textAlignment="center"
-        android:textSize="20dp"
         android:textColor="#fff"
-        android:textStyle="bold"
-        android:text="Attendance Assist"/>
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <!-- <com.bhargavms.dotloader.DotLoader
         android:id="@+id/text_dot_loader"
