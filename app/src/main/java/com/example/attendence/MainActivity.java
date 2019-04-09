@@ -28,7 +28,6 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity
         {
 
-
             public TextView date_time;
             public ImageButton calendar;
             private ImageButton subjects;
@@ -42,11 +41,9 @@ public class MainActivity extends AppCompatActivity
             AlarmManager alarmManager;
             public static final String MyPREFERENCES = "MyPrefs";
             Intent alarmIntent;
-            //----------Show Case View
+ 
             // private SharedPreferences mSharedPreferences;
-            private ClingManager mClingManager;
-            String START_TUTORIAL_KEY="showcase";
-            String SHOW_CASE="showCase";
+     
             //--------------------------
             private com.github.clans.fab.FloatingActionButton menu_item1;
 
@@ -65,13 +62,7 @@ public class MainActivity extends AppCompatActivity
 
                 Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
                 setSupportActionBar(toolbar);
-
-
-                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-                ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                        this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-                drawer.setDrawerListener(toggle);
-                toggle.syncState();
+                
 
                 // NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
                 // navigationView.setNavigationItemSelectedListener(this);
@@ -210,10 +201,12 @@ public class MainActivity extends AppCompatActivity
                 return super.onOptionsItemSelected(item);
             }
 
+
             @Override
             protected void onResume() {
                 super.onResume();
-                // }
-            }
 
+                // }
+
+            }
 }
