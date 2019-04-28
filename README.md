@@ -1,6 +1,7 @@
 App Name: BearcatAttendanceTracker
 
 App Logo:  
+![androidlogo](https://user-images.githubusercontent.com/42945795/56868945-f95f8400-69be-11e9-8113-fe6774fe07c3.png)
 
 Team Members:
 1. Gangadhar Adusumalli
