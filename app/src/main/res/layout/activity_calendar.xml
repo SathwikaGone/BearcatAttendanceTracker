@@ -24,17 +24,17 @@
         android:layout_below="@id/calendar1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
     <com.github.clans.fab.FloatingActionButton
         android:id="@+id/help"
         android:layout_width="46dp"
         android:layout_height="46dp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="8dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginRight="8dp"
-        fab:fab_colorNormal="#c62828"
+        android:layout_marginBottom="8dp"
         android:src="@mipmap/help3"
-        />
+        fab:fab_colorNormal="#006447" />
 
 
 
