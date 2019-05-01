@@ -65,7 +65,8 @@ public class TimeTableActivity extends AppCompatActivity {
     {
         btn=(com.cuboid.cuboidcirclebutton.CuboidButton)findViewById(R.id.Mon);
         decolorAll();
-        btn.setBackgroundColor(Color.rgb(156, 39, 176));
+        btn.setBackgroundColor(Color.parseColor("#8C001E"));
+        //btn.setBackgroundColor(Color.rgb(156, 39, 176));
         CreateList("Monday");
 
         btn0=(com.cuboid.cuboidcirclebutton.CuboidButton)findViewById(R.id.Mon);
@@ -73,7 +74,7 @@ public class TimeTableActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 decolorAll();
-                btn0.setBackgroundColor(Color.rgb(156, 39, 176));
+                btn0.setBackgroundColor(Color.parseColor("#8C001E"));
                 CreateList("Monday");
             }
         });
@@ -83,7 +84,7 @@ public class TimeTableActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 decolorAll();
-                btn1.setBackgroundColor(Color.rgb(156, 39, 176));
+                btn1.setBackgroundColor(Color.parseColor("#8C001E"));
                 CreateList("Tuesday");
             }
         });
@@ -93,7 +94,7 @@ public class TimeTableActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 decolorAll();
-                btn2.setBackgroundColor(Color.rgb(156, 39, 176));
+                btn2.setBackgroundColor(Color.parseColor("#8C001E"));
                 CreateList("Wednesday");
             }
         });
@@ -103,7 +104,7 @@ public class TimeTableActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 decolorAll();
-                btn3.setBackgroundColor(Color.rgb(156, 39, 176));
+                btn3.setBackgroundColor(Color.parseColor("#8C001E"));
                 CreateList("Thursday");
             }
         });
@@ -113,7 +114,7 @@ public class TimeTableActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 decolorAll();
-                btn4.setBackgroundColor(Color.rgb(156, 39, 176));
+                btn4.setBackgroundColor(Color.parseColor("#8C001E"));
                 CreateList("Friday");
             }
         });
@@ -123,7 +124,7 @@ public class TimeTableActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 decolorAll();
-                btn5.setBackgroundColor(Color.rgb(156, 39, 176));
+                btn5.setBackgroundColor(Color.parseColor("#8C001E"));
                 CreateList("Saturday");
             }
         });
@@ -133,7 +134,7 @@ public class TimeTableActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 decolorAll();
-                btn6.setBackgroundColor(Color.rgb(156, 39, 176));
+                btn6.setBackgroundColor(Color.parseColor("#8C001E"));
                 CreateList("Sunday");
             }
         });
