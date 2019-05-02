@@ -32,15 +32,6 @@
         android:textSize="20dp"
         android:textStyle="bold" />
 
-    <!-- <com.bhargavms.dotloader.DotLoader
-        android:id="@+id/text_dot_loader"
 
-        android:layout_alignParentBottom="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        app:color_array="@array/dot_colors"
-        app:dot_radius="4dp"
-        app:number_of_dots="4"/> -->
 </RelativeLayout>
 
