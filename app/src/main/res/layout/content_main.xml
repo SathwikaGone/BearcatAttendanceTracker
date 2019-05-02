@@ -32,7 +32,7 @@
         android:padding="5dp"
         android:scrollHorizontally="true"
         android:singleLine="true"
-        android:text="Hi! Welcome to Attendance Assist. This app will keep your student life organised."
+        android:text="Hi! Welcome to Bearcat Attendence Tracker. This app will keep your student life organised."
         android:textAlignment="center"
         android:textColor="#006447"
         android:textSize="15dp" />
